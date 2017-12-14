@@ -59,6 +59,7 @@
             // 
             // buttonRunSwap
             // 
+            this.buttonRunSwap.Enabled = false;
             this.buttonRunSwap.Location = new System.Drawing.Point(12, 65);
             this.buttonRunSwap.Name = "buttonRunSwap";
             this.buttonRunSwap.Size = new System.Drawing.Size(75, 23);
@@ -69,6 +70,7 @@
             // 
             // buttonRunInsert
             // 
+            this.buttonRunInsert.Enabled = false;
             this.buttonRunInsert.Location = new System.Drawing.Point(93, 65);
             this.buttonRunInsert.Name = "buttonRunInsert";
             this.buttonRunInsert.Size = new System.Drawing.Size(75, 23);
@@ -79,6 +81,7 @@
             // 
             // buttonRunInvert
             // 
+            this.buttonRunInvert.Enabled = false;
             this.buttonRunInvert.Location = new System.Drawing.Point(174, 65);
             this.buttonRunInvert.Name = "buttonRunInvert";
             this.buttonRunInvert.Size = new System.Drawing.Size(75, 23);
@@ -93,6 +96,7 @@
             this.textBoxTime.Name = "textBoxTime";
             this.textBoxTime.Size = new System.Drawing.Size(72, 20);
             this.textBoxTime.TabIndex = 4;
+            this.textBoxTime.Text = "10";
             // 
             // labelTime
             // 

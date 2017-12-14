@@ -19,7 +19,7 @@ namespace TabuSearch
         public List<List<double>> MakeMatrix()
         {
             var matrix = new List<List<double>>();
-
+            
             if (_tspFile.Type == FileType.TSP)
             {
                 for (int i = 0; i < Dimension; i++)

@@ -128,7 +128,7 @@ namespace TabuSearch
             var bestCandidate = new List<int>(SolutionVertices);
             var bestCandidateDistance = SolutionDistance;
 
-            var tabuList = new List<(int, int)>();
+            var tabuList = new List<int>();
 
             var stoppingCondition = false;
             var iterations = 0;
@@ -143,7 +143,7 @@ namespace TabuSearch
                     {
                         var tempList = new List<int>(bestCandidate);
 
-                        if (i != j && !tabuList.Contains((bestCandidate[i], bestCandidate[j])))
+                        if (i != j && !tabuList.Contains(bestCandidate[i]))
                         {
                             var tmp = tempList[i];
                             tempList.RemoveAt(i);
@@ -154,7 +154,7 @@ namespace TabuSearch
                             {
                                 bestCandidate = new List<int>(tempList);
                                 bestCandidateDistance = distance;
-                                var bestMove = (bestCandidate[i], bestCandidate[j]);
+                                var bestMove = bestCandidate[i];
                                 tabuList.Add(bestMove);
 
                                 if (tabuList.Count > tabuSize)
@@ -206,48 +206,13 @@ namespace TabuSearch
             {
                 var foundBetter = false;
 
-                //for (int i = 1; i < bestCandidate.Count - 5; i++)
-                //{
-                //    for (int j = bestCandidate.Count - 2; j > i + 3; j--)
-                //    {
-                //        var tempList = new List<int>(bestCandidate);
-
-                //        if (!tabuList.Contains((bestCandidate[i], bestCandidate[j])))
-                //        {
-                //            for (int k = i + 1, l = j - 1, m = 0; m < (l - k + 1)/2; k++, l--, m++)
-                //            {
-                //                var tmp = tempList[k];
-                //                tempList[k] = tempList[l];
-                //                tempList[l] = tmp;
-                //            }
-                //            var distance = CalculateDistance(tempList);
-
-                //            if (distance < bestCandidateDistance)
-                //            {
-                //                bestCandidate = new List<int>(tempList);
-                //                bestCandidateDistance = distance;
-                //                var bestMove = (bestCandidate[i], bestCandidate[j]);
-                //                tabuList.Add(bestMove);
-
-                //                if (tabuList.Count > 10)
-                //                {
-                //                    tabuList.RemoveAt(0);
-                //                }
-
-                //                foundBetter = true;
-                //                iterations = 0;
-                //            }
-                //        }
-                //    }
-                //}
-
                 for (int i = 1; i < bestCandidate.Count - 5; i++)
                 {
                     for (int j = i + 3; j < bestCandidate.Count - 1; j++)
                     {
                         var tempList = new List<int>(bestCandidate);
 
-                        if (!tabuList.Contains((bestCandidate[i], bestCandidate[j])))
+                        if (!tabuList.Contains((bestCandidate[i], bestCandidate[j])) && !tabuList.Contains((bestCandidate[j], bestCandidate[i])))
                         {
                             for (int k = i + 1, l = j - 1, m = 0; m < (l - k + 1) / 2; k++, l--, m++)
                             {
@@ -262,7 +227,7 @@ namespace TabuSearch
                                 bestCandidate = new List<int>(tempList);
                                 bestCandidateDistance = distance;
                                 var bestMove = (bestCandidate[i], bestCandidate[j]);
-                                //tabuList.Add(bestMove);
+                                tabuList.Add(bestMove);
 
                                 if (tabuList.Count > tabuSize)
                                 {

@@ -18,6 +18,9 @@ namespace TabuSearch
             {
                 Parser.LoadFile(openFileDialog.FileName);
                 Graph = new Graph{Matrix = Parser.MakeMatrix()};
+                buttonRunSwap.Enabled = true;
+                buttonRunInsert.Enabled = true;
+                buttonRunInvert.Enabled = true;
             }
         }
 
