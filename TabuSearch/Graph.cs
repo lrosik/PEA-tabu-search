@@ -60,16 +60,11 @@ namespace TabuSearch
 
             var bestCandidate = new List<int>(SolutionVertices);
             var bestCandidateDistance = SolutionDistance;
-
             var tabuList = new List<(int, int)>();
-
             var stoppingCondition = false;
-            var iterations = 0;
 
             while (!stoppingCondition)
             {
-                var foundBetter = false;
-
                 for (int i = 1; i < bestCandidate.Count - 2; i++)
                 {
                     for (int j = i + 1; j < bestCandidate.Count - 1; j++)
@@ -94,18 +89,12 @@ namespace TabuSearch
                                 {
                                     tabuList.RemoveAt(0);
                                 }
-
-                                foundBetter = true;
-                                iterations = 0;
                             }
                         }
                     }
                 }
 
-                //if (!foundBetter)
-                //    iterations++;
-
-                if (iterations > 3 || stopwatch.ElapsedMilliseconds / 1000 >= time)
+                if (stopwatch.ElapsedMilliseconds / 1000 >= time)
                     stoppingCondition = true;
             }
 
@@ -135,8 +124,6 @@ namespace TabuSearch
 
             while (!stoppingCondition)
             {
-                var foundBetter = false;
-
                 for (int i = 1; i < bestCandidate.Count - 2; i++)
                 {
                     for (int j = 1; j < bestCandidate.Count - 1; j++)
@@ -161,20 +148,12 @@ namespace TabuSearch
                                 {
                                     tabuList.RemoveAt(0);
                                 }
-
-                                foundBetter = true;
-                                iterations = 0;
                             }
                         }
                     }
                 }
 
-                //if (!foundBetter)
-                //{
-                //    iterations++;
-                //}
-
-                if (iterations >= 3 || stopwatch.ElapsedMilliseconds/1000 >= time)
+                if (stopwatch.ElapsedMilliseconds/1000 >= time)
                     stoppingCondition = true;
             }
 
@@ -196,16 +175,11 @@ namespace TabuSearch
 
             var bestCandidate = new List<int>(SolutionVertices);
             var bestCandidateDistance = SolutionDistance;
-
             var tabuList = new List<(int, int)>();
-
             var stoppingCondition = false;
-            var iterations = 0;
 
             while (!stoppingCondition)
             {
-                var foundBetter = false;
-
                 for (int i = 1; i < bestCandidate.Count - 5; i++)
                 {
                     for (int j = i + 3; j < bestCandidate.Count - 1; j++)
@@ -233,20 +207,12 @@ namespace TabuSearch
                                 {
                                     tabuList.RemoveAt(0);
                                 }
-
-                                foundBetter = true;
-                                iterations = 0;
                             }
                         }
                     }
                 }
 
-                //if (!foundBetter)
-                //{
-                //    iterations++;
-                //}
-
-                if (iterations >= 3 || stopwatch.ElapsedMilliseconds / 1000 >= time)
+                if (stopwatch.ElapsedMilliseconds / 1000 >= time)
                     stoppingCondition = true;
             }
 
